@@ -88,6 +88,11 @@ io.on('connection', (socket) => {
 
    io.on('disconnection', () => {
       console.log("Disconnect")
+
+      io.to(room).emit('joinRoom', {
+         data: { users: getRoomUsers(room) },
+      });
+
    });
 });
 
